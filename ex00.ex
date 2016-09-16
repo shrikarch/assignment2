@@ -6,6 +6,7 @@ defmodule Ex00 do
   import Support
 
   ##############################################################################
+  # Shrikar Chonkar - 46857243                                                 #
   # 1: 1 questions,  0 points available                                        #
   ##############################################################################
   # Rubric (per question):                                                     #
@@ -36,10 +37,15 @@ defmodule Ex00 do
   # Write a function that increments its numeric parameter #
   ##########################################################
 
-  inc = your_anonymous_function(1)
+  inc = fn(n) ->
+    n + 1
+  end
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0
+
+  #calling to check if it works
+  IO.puts inc.(2)
 end
 
-
+#completed
