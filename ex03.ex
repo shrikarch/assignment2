@@ -55,9 +55,13 @@ defmodule Ex03 do
 
   """
 
-  def odd_even do
-    &(&1 < 3)
-  end
+    def odd_even([]), do: []
+    def odd_even([head|tail]) do
+      [if(rem(head,2)==0,do:  :even,else:  :odd)|odd_even(tail)]
+    end
+    #Enum.map (list), &(Integer.is_even(&1)) #That's another way to do it
+
+
 
   ##############################################################################
   # 3.2:  5 points #
@@ -78,7 +82,8 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([], k), do: k
+  def list_contains([head|tail], k), do: if((head == k), do: :true, else: list_contains(tail, k))
 
   ##############################################################################
   # 3.3:  5 points #
@@ -102,7 +107,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([hd1|tl1],[hd2|tl2]) do
+    if(([hd1|tl1] != [hd2|tl2]), do: false,else: true)
+  end
 
 
 
@@ -150,7 +157,47 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({r,s,t,u,v,w,x,y,z}) do
+      cond do
+        (r==u)&&(r==x)&&(r==:x) ->
+          :x
+          (r==u)&&(r==x)&&(r==:o) ->
+            :o
+            (s==v)&&(s==y)&&(s==:x) ->
+              :x
+              (s==v)&&(s==y)&&(s==:o) ->
+                :o
+                (t==w)&&(t==z)&&(t==:x) ->
+                  :x
+                  (t==w)&&(t==z)&&(t==:o) ->
+                    :o
+                    (r==v)&&(r==z)&&(r==:x) ->
+                      :x
+                      (r==v)&&(r==z)&&(r==:o) ->
+                        :o
+                        (t==v)&&(t==x)&&(t==:x) ->
+                          :x
+                          (t==v)&&(t==x)&&(t==:o) ->
+                            :o
+                            (r==s)&&(r==t)&&(r==:x) ->
+                              :x
+                              (r==s)&&(r==t)&&(r==:o) ->
+                                :o
+                                (u==v)&&(u==w)&&(u==:x) ->
+                                  :x
+                                  (u==v)&&(u==w)&&(u==:o) ->
+                                    :o
+                                    (x==y)&&(x==z)&&(x==:x) ->
+                                      :x
+                                      (x==y)&&(x==z)&&(x==:o) ->
+                                        :o
+                                        :error ->
+                                          false
+                                          true ->
+
+      end
+
+end
 
 
   ###########################

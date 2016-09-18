@@ -39,7 +39,9 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse(list) do
+    reduce(list, [], &[&1|&2])
+  end
 
   ##############################################################################
   # 4.2:  5 points #
@@ -55,7 +57,9 @@ defmodule Ex04 do
 
   """
 
-  def min . . . "your code"
+  def min(list) do
+    Enum.reduce([list], [], fn(x,acc) -> min(x, acc) end)
+  end
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,9 +79,32 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def even_odd(list) do
+    {split(list, &Ex04.splitter_even/2),split(list, &Ex04.splitter_odd/2)}
+  end
 
+  def split(list, split_fn) do
+      reduce(list, [], split_fn)
+      |> reverse
+  end
 
+  def splitter_even(value, result) do
+    cond do
+      Integer.is_even(value) ->
+        [value | result]
+      true ->
+        result
+    end
+  end
+
+  def splitter_odd(value, result) do
+    cond do
+      Integer.is_odd(value) ->
+        [value | result]
+      true ->
+        result
+    end
+  end
 
 
   ###########################
@@ -98,4 +125,3 @@ defmodule TestEx04 do
   use ExUnit.Case
   doctest Ex04
 end
-
