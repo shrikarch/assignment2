@@ -39,9 +39,7 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse(list) do
-    reduce(list, [], &[&1|&2])
-  end
+  def reverse(list), do: reduce(list, [], &[&1|&2])
 
   ##############################################################################
   # 4.2:  5 points #
@@ -57,9 +55,8 @@ defmodule Ex04 do
 
   """
 
-  def min(list) do
-    Enum.reduce([list], [], fn(x,acc) -> min(x, acc) end)
-  end
+  def min(list), do: reduce(list, &min(&1,&2))
+
 
   ##############################################################################
   # 4.3: 10 points #
